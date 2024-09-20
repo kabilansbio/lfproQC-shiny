@@ -77,8 +77,8 @@
 
 ### 1. Uploading the Proteomics Expression Dataset and Group Information
 
-To upload your data, navigate to the **‘Data Upload’** tab. You can
-upload your dataset either from local storage or use the provided
+To upload the data, navigate to the **‘Data Upload’** tab. The user can
+upload their dataset either from local storage or use the provided
 example datasets. This Shiny application supports both peptide-based and
 protein-based proteomics datasets. Accepted file formats include
 **‘.xlsx’**, **‘.xls’**, and **‘.csv’**.
@@ -126,9 +126,9 @@ tab.
 <strong>Figure 4:</strong> Uploading the peptide dataset
 </p>
 
-You can also download example datasets and group information from the
-provided buttons within the app. After uploading the datasets, click the
-submit button:
+The user can also download example datasets and group information from
+the provided buttons within the app. After uploading the datasets, click
+the submit button:
 
 <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/example.png" alt="Options for example dataset and data group">
 <p>
@@ -151,7 +151,7 @@ Click the eye symbol to view these results:
 Select either the most frequently occurring combination or any one of
 the three results. All nine combinations of normalized and imputed
 datasets will be displayed in the main panel, with an option to download
-the datasets in **.csv** format. You can also download only the
+the datasets in **.csv** format. The user can also download only the
 normalized datasets based on specific normalization methods:
 
 <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/download_data.png" alt="Download option for the normalized and imputed dataset">
