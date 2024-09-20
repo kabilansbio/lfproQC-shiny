@@ -91,33 +91,33 @@ To upload the data, navigate to the **‘Data Upload’** tab. The user can uplo
 Below are examples of peptide-based and protein-based proteomics datasets:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/peptide.png" alt="Example peptide-based proteomics expression dataset">
+  <img src="/www/peptide.png" alt="Example peptide-based proteomics expression dataset">
   <p><strong>Figure 1:</strong> Example peptide-based proteomics expression dataset</p>
 </div>
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/data.png" alt="Example protein-based proteomics expression dataset">
+  <img src="/www/data.png" alt="Example protein-based proteomics expression dataset">
   <p><strong>Figure 2:</strong> Example protein-based proteomics expression dataset</p>
 </div>
 
 Users must also upload sample group information corresponding to the proteomics expression dataset. An example of sample group information for the protein-based dataset is shown below:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/group.png" alt="Sample group information of the example protein data">
+  <img src="/www/group.png" alt="Sample group information of the example protein data">
   <p><strong>Figure 3:</strong> Sample group information for the example protein data</p>
 </div>
 
 Specify the data type (Peptide or Protein) and select the appropriate peptide aggregation method (sum, mean, or median) if peptide data is used. This will generate the aggregated or rollup protein dataset, visible after submitting both datasets in the **‘Rollup Protein Data’** tab.
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/rollup.png" alt="Uploading the peptide dataset">
+  <img src="/www/rollup.png" alt="Uploading the peptide dataset">
   <p><strong>Figure 4:</strong> Uploading the peptide dataset</p>
 </div>
 
 The user can also download example datasets and group information from the provided buttons within the app. After uploading the datasets, click the submit button:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/example.png" alt="Options for example dataset and data group">
+  <img src="/www/example.png" alt="Options for example dataset and data group">
   <p><strong>Figure 5:</strong> Options for example dataset and data group</p>
 </div>
 
@@ -126,14 +126,14 @@ The user can also download example datasets and group information from the provi
 After uploading the datasets, click the **‘Results’** tab. The main panel will display the best combinations for the dataset based on three statistical evaluation measures: **PCV**, **PEV**, and **PMAD**. Results for all three measures, along with the **NRMSE** values, will be shown. Click the eye symbol to view these results:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/best_comb.png" alt="Best combinations for the dataset">
+  <img src="/www/best_comb.png" alt="Best combinations for the dataset">
   <p><strong>Figure 6:</strong> Best combinations for the dataset</p>
 </div>
 
 Select either the most frequently occurring combination or any one of the three results. All nine combinations of normalized and imputed datasets will be displayed in the main panel, with an option to download the datasets in **.csv** format. The user can also download only the normalized datasets based on specific normalization methods:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/download_data.png" alt="Download option for the normalized and imputed dataset">
+  <img src="/www/download_data.png" alt="Download option for the normalized and imputed dataset">
   <p><strong>Figure 7:</strong> Download option for the normalized and imputed dataset</p>
 </div>
 
@@ -142,7 +142,7 @@ Select either the most frequently occurring combination or any one of the three 
 In the **‘Exploratory Plots’** tab, users can visualize the best combination of normalization and imputation methods through various exploratory plots, including box plots, density plots, QQ plots, MDS plots, and correlation heatmaps:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/boxplot.png" alt="Various exploratory plots for visualization">
+  <img src="/www/boxplot.png" alt="Various exploratory plots for visualization">
   <p><strong>Figure 8:</strong> Various exploratory plots for visualization</p>
 </div>
 
@@ -153,24 +153,24 @@ These plots help assess the normality of the dataset and understand the relation
 In the **‘Differential Expression Analysis’** tab, users can perform differential expression analysis between any two sample groups. Available plots include the MA plot and the volcano plot:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/maplot.png" alt="MA plot pairwise DE analysis">
+  <img src="/www/maplot.png" alt="MA plot pairwise DE analysis">
   <p><strong>Figure 9:</strong> MA plot pairwise DE analysis</p>
 </div>
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/volcano_plot.png" alt="Volcano plot pairwise DE analysis">
+  <img src="/www/volcano_plot.png" alt="Volcano plot pairwise DE analysis">
   <p><strong>Figure 10:</strong> Volcano plot pairwise DE analysis</p>
 </div>
 
 Users can adjust log-fold change values and p-values to identify up-regulated and down-regulated proteins by selecting the checkbox labeled **‘Override Cut-off Limits and P-value’**. Differentially expressed protein results can be downloaded in Excel format:
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/volcano_deg.png" alt="Volcano plot DE analysis with user-defined cut-off limits">
+  <img src="/www/volcano_deg.png" alt="Volcano plot DE analysis with user-defined cut-off limits">
   <p><strong>Figure 11:</strong> Volcano plot DE analysis with user-defined cut-off limits</p>
 </div>
 
 <div class="image-container">
-  <img src="D:/IARI_NEW DELHI/M.Sc/Paper/Final_R/Omics_lfproQC_shiny/www/deg_result.png" alt="Download option for the result of DE proteins">
+  <img src="/www/deg_result.png" alt="Download option for the result of DE proteins">
   <p><strong>Figure 12:</strong> Download option for the result of DE proteins</p>
 </div>
 <!-- Go to top button -->
