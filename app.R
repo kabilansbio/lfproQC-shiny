@@ -47,10 +47,9 @@ ui <- navbarPage(
         height: 100%; /* Set the height of the background */
       }
     "))
-    )
-  ),
-  # Custom CSS for the tooltip
-  tags$style(HTML("
+    ),
+    # Custom CSS for the tooltip
+    tags$style(HTML("
     .tooltip-custom {
       position: relative;
       display: inline-block;
@@ -80,8 +79,8 @@ ui <- navbarPage(
       opacity: 1;
     }
   ")),
-  
-  tags$style(HTML("
+    
+    tags$style(HTML("
   #best_combinations {
     font-size: 18px;  /* Increase font size for better readability */
     color: #000;  /* Change text color to black for high contrast */
@@ -117,7 +116,8 @@ ui <- navbarPage(
   #best_combinations td {
     border-bottom: 2px solid #cce5ff;  /* Light blue bottom borders on the left side of headers */
   }
-")),
+"))
+    ),
   useShinyjs(),  # Enable shinyjs for dynamic control
   
   title = div(
@@ -175,24 +175,26 @@ ui <- navbarPage(
   ),
   
   tabPanel(
-    # Title of the tab
-    HTML('<p style="font-size:16px;"> User Manual </p>'),
-
-    # A div to contain the download button and the user manual content
+    title = HTML('<p style="font-size:16px;">User Manual</p>'),
+    
+    # Container for iframe and download button
     div(
-      style = "position: relative;",  # Use relative positioning to position child elements
-
-      # Download PDF button positioned at the top-right corner
+      style = "position: relative;",
+      
+      # Download User Manual button (HTML)
       div(
-        style = "position: absolute; top: 10px; right: 10px; z-index: 1000;",
-        downloadButton("downloadManualPDF", label = "Download User Manual (HTML)")
+        style = "position: absolute; top: 10px; right: 10px;",
+        downloadButton("downloadManualPDF", "Download User Manual (HTML)")
       ),
-
-      # Include the User Manual HTML file directly (instead of using an iframe)
-      includeHTML("www/User_manual.html")  # Make sure the HTML file is in the www directory
+      
+      # Iframe for embedding the user manual HTML
+      tags$iframe(
+        src = "User_manual.html",  # Use the new resource path
+        style = "width: 100%; height: 800px; border: none;"  # Adjust styling for iframe
+      )
     )
   ),
-
+  
   tabPanel(
     HTML('<p style="font-size:16px;"> Data upload </p>'),
     sidebarLayout(
@@ -229,7 +231,6 @@ ui <- navbarPage(
         actionButton("btn_input", "Submit", class = "btn btn-success btn-block", icon = icon("thumbs-up")),
         helpText("Note: Upload either .csv, .xlsx, or .txt files")
       ),
-      
       mainPanel(
         tabsetPanel(
           tabPanel("Selected data", dataTableOutput("input_data"), downloadButton("download_selected_data", "Download Selected Data")),
@@ -568,7 +569,7 @@ ui <- navbarPage(
                HTML('<p style="font-size:16px; margin-bottom: 4px;"> Principal Scientist</p>'),
                HTML('<p style="font-size:12px; margin-bottom: 40px;"> <i class="fas fa-envelope"></i> kk.chaturvedi@icar.gov.in</p>')),
         column(width = 2, align = "center", 
-               tags$img(src = "Mishra Sir.JPG", height = 200, width = 150, style = "border: 2px solid #3d0c02;"),
+               tags$img(src = "Mishra Sir.jpg", height = 200, width = 150, style = "border: 2px solid #3d0c02;"),
                HTML('<p style="font-size:18px; margin-top: 5px; margin-bottom: 0px;"> <strong>Dr. Dwijesh Chandra Mishra</strong></p>'),
                HTML('<p style="font-size:16px; margin-bottom: 4px;"> Senior Scientist</p>'),
                HTML('<p style="font-size:12px; margin-bottom: 40px;"> <i class="fas fa-envelope"></i> dwij.mishra@gmail.com</p>')),
@@ -595,14 +596,14 @@ ui <- navbarPage(
         ),
         
         column(width = 2, align = "center", 
-               tags$img(src = "girish_jha_sir.PNG", height = 200, width = 150, style = "border: 2px solid #3d0c02;"),
+               tags$img(src = "girish_jha_sir.png", height = 200, width = 150, style = "border: 2px solid #3d0c02;"),
                HTML('<p style="font-size:18px; margin-top: 5px; margin-bottom: 0px;"> <strong>Dr. Girish Kumar Jha</strong></p>'),
                HTML('<p style="font-size:16px; margin-bottom: 4px;"> Professor</p>'),
                HTML('<p style="font-size:12px; margin-bottom: 40px;"> <i class="fas fa-envelope"></i> girish.jha@icar.gov.in</p>')
         ),
         
         column(width = 2, align = "center", 
-               tags$img(src = "sharan_photo.JPG", height = 200, width = 150, style = "border: 2px solid #3d0c02;"),
+               tags$img(src = "sharan_photo.jpg", height = 200, width = 150, style = "border: 2px solid #3d0c02;"),
                HTML('<p style="font-size:18px; margin-top: 5px; margin-bottom: 0px;"> <strong>Dr. Sharanbasappa</strong></p>'),
                HTML('<p style="font-size:16px; margin-bottom: 4px;"> Project Scientist - I</p>'),
                HTML('<p style="font-size:12px; margin-bottom: 40px;"> <i class="fas fa-envelope"></i> smadival509@gmail.com</p>')
@@ -618,16 +619,12 @@ ui <- navbarPage(
 '),
       )
     ),
-  
   footer = tags$footer(
     HTML('<p style="font-size: 16px; text-align: center; color: #1d2951; font-family: calibri; background-color: #f4f0ec; padding: 10px; margin: 0; position: relative; width: 100%;">
          <strong>Copyright &copy; 2024. Division of Agricultural Bioinformatics, ICAR-Indian Agricultural Statistics Research Institute, New Delhi, India. All rights reserved.</strong>
          </p>')
   )
-  
-  
-                
-)
+  )
 
 
 
@@ -635,7 +632,16 @@ ui <- navbarPage(
 #Define server logic
 server <- function(input,output, session){
   
-  # Initialize reactive values
+  # Provide the download for the User Manual (HTML)
+  output$downloadManualPDF <- downloadHandler(
+    filename = function() {
+      "User_Manual.html"
+    },
+    content = function(file) {
+      file.copy("www/User_manual.html", file)
+    }
+  )
+  
   Data <- reactiveVal(NULL)
   DataGroup <- reactiveVal(NULL)
   
@@ -646,10 +652,10 @@ server <- function(input,output, session){
     # Load the file based on extension
     dat <- switch(tools::file_ext(input$file1$name),
                   "csv" = read.csv(input$file1$datapath),
-                  "xlsx" = readxl::read_excel(input$file1$datapath),
+                  "xlsx" = read_excel(input$file1$datapath),
                   showModal(modalDialog(
                     title = "Unsupported Format",
-                    "Please upload either a .csv, .xlsx, or .txt file.",
+                    "Please upload either a .csv or .xlsx file.",
                     easyClose = TRUE
                   ))
     )
@@ -659,7 +665,7 @@ server <- function(input,output, session){
   
   # Load sample dataset
   observeEvent(input$takeDataset, {
-    dat <- read.xlsx(file.path(getwd(), "sample_data.xlsx"))
+    dat <- read.xlsx(file.path(getwd(), "www/sample_data.xlsx"))
     Data(dat)  # Load and clean the sample data
   })
   
@@ -670,10 +676,10 @@ server <- function(input,output, session){
     # Load the file based on extension
     dat <- switch(tools::file_ext(input$file2$name),
                   "csv" = read.csv(input$file2$datapath),
-                  "xlsx" = readxl::read_excel(input$file2$datapath),
+                  "xlsx" = read_excel(input$file2$datapath),
                   showModal(modalDialog(
                     title = "Unsupported Format",
-                    "Please upload either a .csv, .xlsx, or .txt file.",
+                    "Please upload either a .csv or .xlsx file.",
                     easyClose = TRUE
                   ))
     )
@@ -683,7 +689,7 @@ server <- function(input,output, session){
   
   # Load sample group information
   observeEvent(input$takeDataGroup, {
-    dat <- read.xlsx(file.path(getwd(), "sample_groups.xlsx"))
+    dat <- read.xlsx(file.path(getwd(), "www/sample_groups.xlsx"))
     DataGroup(dat)  # Load the sample group information
   })
   
@@ -705,22 +711,10 @@ server <- function(input,output, session){
     datatable(Data())
   })
   
-  original_data <- reactive({
-    return(Data())
-  })
-  
-  data_groups <- reactive({
-    return(DataGroup())
-  })
-  
-  output$best_combinations <- renderTable({
-    return(result()$`Best combinations`)
-  }, rownames = FALSE, outputId = "best_combinations"
-  )
-  
-  #Render rollup protein data
+  # Render rollup protein data
   output$rollup_protein <- renderDataTable({
-    return(result()$`rollup_protein`)
+    req(result()$`rollup_protein`)
+    datatable(result()$`rollup_protein`)
   })
   
   # Download selected data
@@ -753,14 +747,19 @@ server <- function(input,output, session){
     }
   )
   
+  # Download user manual
   output$downloadManualPDF <- downloadHandler(
     filename = function() {
       "User_manual.html"  # Name of the file to download
     },
     content = function(file) {
-      file.copy("www/User_manual.html", file)  # Ensure the PDF is in the www directory
+      file.copy("www/User_manual.html", file)  # Ensure the file is in the www directory
     }
   )
+  
+  output$best_combinations <- renderTable({
+    return(result()$`Best combinations`)
+  })
   
   output$vsn_data <- renderDataTable({
     return(result()$`vsn_data`)
@@ -1234,22 +1233,22 @@ server <- function(input,output, session){
   #DE analysis (MA plot)
   
   output$gr_num_ma <- renderText({
-    grps <- length(unique(data_groups()$Groups))
+    grps <- length(unique(DataGroup()$Groups))
     grps
   })
   
   comb_data_ma <- reactive({
     switch(input$combination_ma,
-           "vsn_knn" =  top_table_fn(result()$`vsn_knn_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "vsn_lls" =  top_table_fn(result()$`vsn_lls_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "vsn_svd" =  top_table_fn(result()$`vsn_svd_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "loess_knn" =  top_table_fn(result()$`loess_knn_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "loess_lls" =  top_table_fn(result()$`loess_lls_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "loess_svd" =  top_table_fn(result()$`loess_svd_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "rlr_knn" =  top_table_fn(result()$`rlr_knn_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "rlr_lls" =  top_table_fn(result()$`rlr_lls_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "rlr_svd" =  top_table_fn(result()$`rlr_svd_data`, data_groups(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "Original_data" =  top_table_fn(original_data(), data_groups(), input$ch_gr1_ma, input$ch_gr2_ma))
+           "vsn_knn" =  top_table_fn(result()$`vsn_knn_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "vsn_lls" =  top_table_fn(result()$`vsn_lls_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "vsn_svd" =  top_table_fn(result()$`vsn_svd_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "loess_knn" =  top_table_fn(result()$`loess_knn_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "loess_lls" =  top_table_fn(result()$`loess_lls_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "loess_svd" =  top_table_fn(result()$`loess_svd_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "rlr_knn" =  top_table_fn(result()$`rlr_knn_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "rlr_lls" =  top_table_fn(result()$`rlr_lls_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "rlr_svd" =  top_table_fn(result()$`rlr_svd_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
+           "Original_data" =  top_table_fn(original_data(), DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma))
   })
   results_ma <- reactive({
     req(input$btn_ma)
@@ -1349,22 +1348,22 @@ server <- function(input,output, session){
 #DE analysis (Volcano plot)
   
   output$gr_num_volcano <- renderText({
-    grps <- length(unique(data_groups()$Groups))
+    grps <- length(unique(DataGroup()$Groups))
     grps
   })
   
   comb_data_volcano <- reactive({
     switch(input$combination_volcano,
-           "vsn_knn" =  top_table_fn(result()$`vsn_knn_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "vsn_lls" =  top_table_fn(result()$`vsn_lls_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "vsn_svd" =  top_table_fn(result()$`vsn_svd_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "loess_knn" =  top_table_fn(result()$`loess_knn_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "loess_lls" =  top_table_fn(result()$`loess_lls_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "loess_svd" =  top_table_fn(result()$`loess_svd_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "rlr_knn" =  top_table_fn(result()$`rlr_knn_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "rlr_lls" =  top_table_fn(result()$`rlr_lls_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "rlr_svd" =  top_table_fn(result()$`rlr_svd_data`, data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "Original_data" =  top_table_fn(original_data(), data_groups(), input$ch_gr1_volcano, input$ch_gr2_volcano))
+           "vsn_knn" =  top_table_fn(result()$`vsn_knn_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "vsn_lls" =  top_table_fn(result()$`vsn_lls_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "vsn_svd" =  top_table_fn(result()$`vsn_svd_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "loess_knn" =  top_table_fn(result()$`loess_knn_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "loess_lls" =  top_table_fn(result()$`loess_lls_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "loess_svd" =  top_table_fn(result()$`loess_svd_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "rlr_knn" =  top_table_fn(result()$`rlr_knn_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "rlr_lls" =  top_table_fn(result()$`rlr_lls_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "rlr_svd" =  top_table_fn(result()$`rlr_svd_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "Original_data" =  top_table_fn(original_data(), DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano))
   })
   results_volcano <- reactive({
     req(input$btn_volcano)
