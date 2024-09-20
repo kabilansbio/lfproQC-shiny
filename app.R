@@ -528,7 +528,7 @@ ui <- navbarPage(
            
   ),
   tabPanel(
-    title = HTML('<p style="font-size:16px;"> Contact </p>'),
+    title = HTML('<p style="font-size:16px;"> Team & Contact Info </p>'),
     fluidPage(
       fluidRow(
         column(width = 2, align = "center",
@@ -608,11 +608,17 @@ ui <- navbarPage(
                HTML('<p style="font-size:12px; margin-bottom: 40px;"> <i class="fas fa-envelope"></i> smadival509@gmail.com</p>')
         ),
         
-        column(width = 1), # This column creates a blank space
-        
+      ),
+      HTML('
+  <div style="text-align: center; font-size: 18px; color: #1a1a1a; font-family: Arial, sans-serif; margin: 20px 0;">
+    <strong>For feedback, bug reports, or suggestions for improvements,</strong><br>
+    please contact us through our GitHub page: 
+    <a href="https://github.com/kabilansbio" style="color: #007bff; text-decoration: underline;">https://github.com/kabilansbio</a>.
+  </div>
+  <div style="margin-bottom: 40px;"></div>
+'),
       )
-    )
-  ),
+    ),
   
   footer = tags$footer(
     HTML('<p style="font-size: 16px; text-align: center; color: #1d2951; font-family: calibri; background-color: #f4f0ec; padding: 10px; margin: 0; position: relative; width: 100%;">
