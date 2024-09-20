@@ -607,8 +607,7 @@ ui <- navbarPage(
                HTML('<p style="font-size:16px; margin-bottom: 4px;"> Project Scientist - I</p>'),
                HTML('<p style="font-size:12px; margin-bottom: 40px;"> <i class="fas fa-envelope"></i> smadival509@gmail.com</p>')
         ),
-        
-      ),
+        ),
       HTML('
   <div style="text-align: center; font-size: 18px; color: #1a1a1a; font-family: Arial, sans-serif; margin: 20px 0;">
     <strong>For feedback, bug reports, or suggestions for improvements,</strong><br>
