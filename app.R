@@ -175,27 +175,6 @@ ui <- navbarPage(
   ),
   
   tabPanel(
-    title = HTML('<p style="font-size:16px;">User Manual</p>'),
-    
-    # Container for iframe and download button
-    div(
-      style = "position: relative;",
-      
-      # Download User Manual button (HTML)
-      div(
-        style = "position: absolute; top: 10px; right: 10px;",
-        downloadButton("downloadManualPDF", "Download User Manual (HTML)")
-      ),
-      
-      # Iframe for embedding the user manual HTML
-      tags$iframe(
-        src = "User_manual.html",  # Use the new resource path
-        style = "width: 100%; height: 800px; border: none;"  # Adjust styling for iframe
-      )
-    )
-  ),
-  
-  tabPanel(
     HTML('<p style="font-size:16px;"> Data upload </p>'),
     sidebarLayout(
       sidebarPanel(
@@ -528,6 +507,27 @@ ui <- navbarPage(
            )
            
   ),
+  tabPanel(
+    title = HTML('<p style="font-size:16px;">User Manual</p>'),
+    
+    # Container for iframe and download button
+    div(
+      style = "position: relative;",
+      
+      # Download User Manual button (HTML)
+      div(
+        style = "position: absolute; top: 10px; right: 10px;",
+        downloadButton("downloadManualPDF", "Download User Manual (HTML)")
+      ),
+      
+      # Iframe for embedding the user manual HTML
+      tags$iframe(
+        src = "User_manual.html",  # Use the new resource path
+        style = "width: 100%; height: 800px; border: none;"  # Adjust styling for iframe
+      )
+    )
+  ),
+  
   tabPanel(
     title = HTML('<p style="font-size:16px;"> Team & Contact Info </p>'),
     fluidPage(
