@@ -509,25 +509,47 @@ best_combination <- function (data_input, groups, data_type, aggr_method){
   rlr_group_data <- grouping_data(rlr.dat, groups)
   
   #Imputation of normalized datasets
-  #KNN imputation
-  KNN_Imputation <- function (dat)
-  {
+  KNN_Imputation <- function(dat) {
+    # Check if there are any missing values in the dataset
+    if (!anyNA(dat)) {
+      # If no missing values, return the dataset as is
+      message("No missing values found. Returning original dataset.")
+      return(dat)
+    }
+    
+    # If there are missing values, perform KNN imputation
     resultkNN <- VIM::kNN(dat, numFun = laeken::weightedMean, weightDist = TRUE,
-                          imp_var = FALSE, k= 10)
+                          imp_var = FALSE, k = 10)
     return(resultkNN)
   }
   
+  
   #LLS imputation
-  LLS_Imputation <- function (dat)
-  {
-    resultLLS <- pcaMethods::llsImpute(dat, k=2, correlation = "pearson", allVariables = TRUE)
+  LLS_Imputation <- function(dat) {
+    # Check if there are any missing values in the dataset
+    if (!anyNA(dat)) {
+      # If no missing values, return the dataset as is
+      message("No missing values found. Returning original dataset.")
+      return(dat)
+    }
+    
+    # If there are missing values, perform LLS imputation
+    resultLLS <- pcaMethods::llsImpute(dat, k = 2, correlation = "pearson", allVariables = TRUE)
     dataSet.imputed <- resultLLS@completeObs
     return(dataSet.imputed)
   }
   
+  
   #SVD imputation
-  SVD_Imputation <- function (dat)
-  {
+  SVD_Imputation <- function(dat) {
+    # Check if there are any missing values in the dataset
+    if (!anyNA(dat)) {
+      # If no missing values, return the dataset as is
+      message("No missing values found. Returning original dataset.")
+      return(dat)
+    }
+    
+    # If there are missing values, perform SVD imputation
     resultSVD <- pcaMethods::pca(dat, method = "svdImpute", nPcs = 2)
     dataSet.imputed <- resultSVD@completeObs
     return(dataSet.imputed)

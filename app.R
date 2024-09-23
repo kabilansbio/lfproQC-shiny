@@ -1063,7 +1063,7 @@ server <- function(input,output, session){
    })
   
   output$Boxplot_data_original <- renderPlotly({
-    Boxplot_data(original_data())
+    Boxplot_data(Data())
   })
  
  #Exploratory plots (Density plot)
@@ -1104,7 +1104,7 @@ server <- function(input,output, session){
   })
   
   output$Densityplot_data_original <- renderPlotly({
-    Densityplot_data(original_data())
+    Densityplot_data(Data())
   })
   
   #Exploratory plots (Correlation heatmap plot)
@@ -1145,7 +1145,7 @@ server <- function(input,output, session){
   })
   
   output$Corrplot_data_original <- renderPlotly({
-    Corrplot_data(original_data())
+    Corrplot_data(Data())
   })
   
   #Exploratory plots (QQ-plot)
@@ -1186,7 +1186,7 @@ server <- function(input,output, session){
   })
   
   output$QQplot_data_original <- renderPlotly({
-    QQplot_data(original_data())
+    QQplot_data(Data())
   })
   
   #Exploratory plots (MDS plot)
@@ -1227,7 +1227,7 @@ server <- function(input,output, session){
   })
   
   output$MDSplot_data_original <- renderPlotly({
-    MDSplot_data(original_data())
+    MDSplot_data(Data())
   })
   
   #DE analysis (MA plot)
@@ -1248,7 +1248,7 @@ server <- function(input,output, session){
            "rlr_knn" =  top_table_fn(result()$`rlr_knn_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
            "rlr_lls" =  top_table_fn(result()$`rlr_lls_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
            "rlr_svd" =  top_table_fn(result()$`rlr_svd_data`, DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma),
-           "Original_data" =  top_table_fn(original_data(), DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma))
+           "Original_data" =  top_table_fn(Data(), DataGroup(), input$ch_gr1_ma, input$ch_gr2_ma))
   })
   results_ma <- reactive({
     req(input$btn_ma)
@@ -1363,7 +1363,7 @@ server <- function(input,output, session){
            "rlr_knn" =  top_table_fn(result()$`rlr_knn_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
            "rlr_lls" =  top_table_fn(result()$`rlr_lls_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
            "rlr_svd" =  top_table_fn(result()$`rlr_svd_data`, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "Original_data" =  top_table_fn(original_data(), DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano))
+           "Original_data" =  top_table_fn(Data(), DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano))
   })
   results_volcano <- reactive({
     req(input$btn_volcano)
