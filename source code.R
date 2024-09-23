@@ -915,8 +915,11 @@ best_combination <- function (data_input, groups, data_type, aggr_method){
   # Get the frequency of each element in the dataframe
   freq <- table(separated_data)
   
-  # Find the most occurring element
-  PCV_best_combination <- names(freq)[which.max(freq)]
+  # Find the maximum frequency
+  max_freq <- max(freq)
+  
+  # Get the names of all elements that have the maximum frequency
+  PCV_best_combination <- names(freq)[freq == max_freq]
   
   #Groupwise PEV estimation
   Group_data_PEV = function(data1, groups){
@@ -1216,8 +1219,11 @@ best_combination <- function (data_input, groups, data_type, aggr_method){
   # Get the frequency of each element in the dataframe
   freq <- table(separated_data)
   
-  # Find the most occurring element
-  PEV_best_combination <- names(freq)[which.max(freq)]
+  # Find the maximum frequency
+  max_freq <- max(freq)
+  
+  # Get the names of all elements that have the maximum frequency
+  PEV_best_combination <- names(freq)[freq == max_freq]
   
   #Groupwise PMAD function
   Group_data_PMAD = function(data1, groups){
@@ -1514,11 +1520,24 @@ best_combination <- function (data_input, groups, data_type, aggr_method){
   # Get the frequency of each element in the dataframe
   freq <- table(separated_data)
   
-  # Find the most occurring element
-  PMAD_best_combination <- names(freq)[which.max(freq)]
+  # Find the maximum frequency
+  max_freq <- max(freq)
   
-  #Finding the best combination
-  Best_combinations <- cbind(PCV_best_combination, PEV_best_combination, PMAD_best_combination)
+  # Get the names of all elements that have the maximum frequency
+  PMAD_best_combination <- names(freq)[freq == max_freq]
+  
+  # Collapse the combinations into comma-separated strings
+  PCV_best_combination_str <- paste(PCV_best_combination, collapse = ", ")
+  PEV_best_combination_str <- paste(PEV_best_combination, collapse = ", ")
+  PMAD_best_combination_str <- paste(PMAD_best_combination, collapse = ", ")
+  
+  # Create a one-row data frame (or matrix) for the values
+  Best_combinations <- data.frame(
+    PCV_best_combination = PCV_best_combination_str,
+    PEV_best_combination = PEV_best_combination_str,
+    PMAD_best_combination = PMAD_best_combination_str,
+    stringsAsFactors = FALSE
+  )
   
   #Adding names to table
   Combinations <- c("vsn_knn", "vsn_lls", "vsn_svd",
