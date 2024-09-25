@@ -170,7 +170,7 @@ ui <- navbarPage(
     
     tags$div(
       style = "text-align: center;",
-      tags$img(src = "graphical_abstract-shiny.jpg", height = "450px", width = "800px")
+      tags$img(src = "graphical_abstract-shiny.png", height = "450px", width = "800px")
     )
   ),
   
