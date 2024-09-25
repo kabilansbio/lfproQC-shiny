@@ -483,7 +483,7 @@ ui <- navbarPage(
                                        numericInput("x1_volcano", HTML('<p style="font-size: 14px; margin-top: 2px; margin-bottom: 0px;"> Cut-off limit for down-regulated</p>'), value = 0),
                                        bsTooltip("x1_volcano", "A log-fold change less than this input value is considered down-regulated. Default: -1", placement = "right", options = list(container = "body")),                                
                                        numericInput("x2_volcano", HTML('<p style="font-size: 14px; margin-top: 0px; margin-bottom: 0px;"> Cut-off limit for up-regulated</p>'), value = 0),
-                                       bsTooltip("x1_volcano", "A log-fold change less than this input value is considered down-regulated. Default: -1", placement = "right", options = list(container = "body")),                                
+                                       bsTooltip("x2_volcano", "A log-fold change less than this input value is considered down-regulated. Default: -1", placement = "right", options = list(container = "body")),                                
                                        numericInput("p_volcano", HTML('<p style="font-size: 14px; margin-top: 0px; margin-bottom: 2px;"> Choose p-value (Default:0.05)</p>'), value = 0.05),
                                        bsTooltip("p_volcano", "p-value less than this input value is statistically significant", placement = "right", options = list(container = "body"))                                
                                      ),
