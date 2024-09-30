@@ -184,7 +184,7 @@ ui <- navbarPage(
         radioButtons(
           inputId = "data_type", 
           label = HTML('<p style="font-size:14px; color:#49796b;">Choose data type</p>'), 
-          choices = c("Peptide", "Protein"),
+          choices = c("Protein", "Peptide"),
           inline = TRUE
         ),
         
