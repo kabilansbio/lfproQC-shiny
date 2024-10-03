@@ -14,6 +14,8 @@ library(tidyr)
 library(readxl)
 library(reshape)
 library(reshape2)
+library(googleAnalyticsR)
+library(googleAuthR)
 library(laeken)
 library(Hmisc)
 library(Matrix)
@@ -26,16 +28,18 @@ library(vsn)
 source("source code.R")
 options(shiny.maxRequestSize = 30*1024^2)
 
+googleAuthR::gar_auth_service("www/lfproqc-omics-c6223afc798b.json")
+
 #Define UI
 ui <- navbarPage(
   header = tagList(
     tags$head(
-      tags$script(async = NA, src = "https://www.googletagmanager.com/gtag/js?id=G-6LS933L73K"),
+      tags$script(async = NA, src = "https://www.googletagmanager.com/gtag/js?id=G-PZ973KLMDZ"),
       tags$script(
         'window.dataLayer = window.dataLayer || [];
        function gtag(){dataLayer.push(arguments);}
        gtag("js", new Date());
-       gtag("config", "G-6LS933L73K");'
+       gtag("config", "G-PZ973KLMDZ");'
       )
     ),
     tags$head(
@@ -49,6 +53,27 @@ ui <- navbarPage(
       }
     "))
     ),
+    #for page counts
+    tags$head(
+      tags$style(HTML("
+    .pageview-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+      width: 150px; /* Adjust width as needed */
+      text-align: center;
+    }
+    .pageview-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  "))),
     # Custom CSS for the tooltip
     tags$style(HTML("
     .tooltip-custom {
@@ -172,6 +197,10 @@ ui <- navbarPage(
     tags$div(
       style = "text-align: center;",
       tags$img(src = "graphical_abstract-shiny.png", height = "450px", width = "800px")
+    ),
+    # Box for Total Page Views
+    div(class = "pageview-box",
+        textOutput("total_pageviews")
     )
   ),
   
@@ -633,6 +662,20 @@ ui <- navbarPage(
 #Define server logic
 server <- function(input,output, session){
   
+  pageviews_data <- reactive({
+    property_id <- "461583712"  # Replace with your actual GA4 property ID
+    data <- ga_data(
+      propertyId = property_id,
+      metrics = "screenPageViews",
+      date_range = c("2020-01-01", "today")  # Fetch data from an early start date
+    )
+    sum(data$screenPageViews)  # Calculate total pageviews
+  })
+  
+  # Display total page views in the Shiny app
+  output$total_pageviews <- renderText({
+    paste("Total Page Views (All Time):", pageviews_data())
+  })
   # Provide the download for the User Manual (HTML)
   output$downloadManualPDF <- downloadHandler(
     filename = function() {
