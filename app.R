@@ -196,7 +196,7 @@ ui <- navbarPage(
     
     tags$div(
       style = "text-align: center;",
-      tags$img(src = "graphical_abstract-shiny.png", height = "450px", width = "800px")
+      tags$img(src = "graphical_abstract-shiny.png", height = "800px", width = "500px")
     ),
     # Box for Total Page Views
     div(class = "pageview-box",
