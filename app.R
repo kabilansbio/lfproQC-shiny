@@ -160,7 +160,7 @@ ui <- navbarPage(
     ),
     
     HTML('<p style="font-size: 18px; color: #333333; line-height: 1.5; margin-top: 20px; margin-bottom: 10px; font-family: palatino linotype;">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Label-free bottom-up proteomics expression data is often affected by data heterogeneity and missing values...
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Label-free bottom-up proteomics expression data is often affected by heterogeneity and missing values. Normalization and missing value imputation are commonly applied to address these issues and prepare the dataset for downstream analysis. This Shiny application provides an optimal combination of normalization and imputation methods for label-free proteomics expression data. It utilizes three commonly used normalization methods and three imputation methods. Additionally, three statistical evaluation measures are applied to select the best combination of normalization and imputation methods for the dataset.
     </p>'),
     
     HTML('
