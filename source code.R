@@ -64,9 +64,9 @@ Densityplot_data <- function (data){
       position = as.numeric(factor(variable, names(data)[-1])),
       order_col = (position - 1) %% 3
     ) %>%
-    dplyr::group_by(order_col, position) |>
-    dplyr::mutate(order_row = dplyr::row_number()) |>
-    dplyr::ungroup() |>
+    dplyr::group_by(order_col, position) %>%
+    dplyr::mutate(order_row = dplyr::row_number()) %>%
+    dplyr::ungroup() %>%
     dplyr::arrange(order_row, order_col) %>%
     dplyr::mutate(variable = factor(variable, levels = unique(variable)))
   
@@ -189,9 +189,9 @@ QQplot_data <- function(data) {
       position = as.numeric(factor(variable, names(data)[-1])),
       order_col = (position - 1) %% 3
     ) %>%
-    dplyr::group_by(order_col, position) |>
-    dplyr::mutate(order_row = dplyr::row_number()) |>
-    dplyr::ungroup() |>
+    dplyr::group_by(order_col, position) %>%
+    dplyr::mutate(order_row = dplyr::row_number()) %>%
+    dplyr::ungroup() %>%
     dplyr::arrange(order_row, order_col) %>%
     dplyr::mutate(variable = factor(variable, levels = unique(variable)))
   
@@ -688,18 +688,18 @@ best_combination <- function (data_input, groups, data_type, aggr_method){
   
   #Final result
   grouping_result <- function (data){
-    result2 <- as.data.frame(data |>
-                               dplyr::mutate(row = dplyr::row_number()) |>
-                               tidyr::pivot_longer(-row, values_transform = as.character) |>
+    result2 <- as.data.frame(data %>%
+                               dplyr::mutate(row = dplyr::row_number()) %>%
+                               tidyr::pivot_longer(-row, values_transform = as.character) %>%
                                dplyr::mutate(pair_num = (dplyr::row_number() + 1) %/% 2, 
-                                             type = dplyr::if_else(dplyr::row_number() %% 2 == 1, "val", "grp"), .by = row) |>
-                               dplyr::select(-name) |>
-                               tidyr::pivot_wider(names_from = type, values_from = value) |>
+                                             type = dplyr::if_else(dplyr::row_number() %% 2 == 1, "val", "grp"), .by = row) %>%
+                               dplyr::select(-name) %>%
+                               tidyr::pivot_wider(names_from = type, values_from = value) %>%
                                dplyr::summarize(vals = paste0(val, collapse = ", "),
-                                                .by = c(pair_num, grp)) |>
-                               dplyr::mutate(row = dplyr::row_number(), .by = pair_num) |>
-                               tidyr::pivot_wider(names_from = pair_num, values_from = c(vals, grp), names_vary = "slowest") |>
-                               dplyr::select(-row) |>
+                                                .by = c(pair_num, grp)) %>%
+                               dplyr::mutate(row = dplyr::row_number(), .by = pair_num) %>%
+                               tidyr::pivot_wider(names_from = pair_num, values_from = c(vals, grp), names_vary = "slowest") %>%
+                               dplyr::select(-row) %>%
                                `colnames<-`(colnames(data)))
     
     result <- result2[1,]
