@@ -186,7 +186,7 @@ ui <- navbarPage(
     </div>
   '),
     HTML('<p style="font-size: 18px; color: #333333; line-height: 1.5; margin-top: 10px; margin-bottom: 15px;font-family: palatino linotype;">
-        The user can also visualize the results by using various available exploratory plots. This tool also provides an option to conduct a differential expression analysis between two sample groups. The chosen three normalization methods, three imputation methods, and three evaluation measures were selected for this study based on the research papers published by <a href="https://doi.org/10.1093/bib/bbw095" style="color: #1a0dab;"> Välikangas et al. (2016) </a>,  <a href="https://doi.org/10.1038/s41598-021-81279-4" style="color: #1a0dab;"> Jin et al. (2021) </a>, and <a href="http://dx.doi.org/10.2174/1574893618666230223150253" style="color: #1a0dab;"> Srivastava et al. (2023) </a>. The user can also access these functionalities through the R package named <a href="https://cran.r-project.org/web/packages/lfproQC/index.html" style="color: #1a0dab;"> lfproQC </a>. 
+        The user can also visualize the results by using various available exploratory plots. This tool also provides an option to conduct a differential expression analysis between two sample groups. The chosen three normalization methods, three imputation methods, and three evaluation measures were selected for this study based on the research papers published by <a href="https://doi.org/10.1093/bib/bbw095" style="color: #1a0dab;"> Välikangas et al. (2016) </a>,  <a href="https://doi.org/10.1038/s41598-021-81279-4" style="color: #1a0dab;"> Jin et al. (2021) </a>, and <a href="http://dx.doi.org/10.2174/1574893618666230223150253" style="color: #1a0dab;"> Srivastava et al. (2023) </a>.  
       </p>'
     ),
     HTML('<p style="font-size: 30px; color: #1d2951; line-height: 1.5; margin-top: 30px; margin-bottom: 30px;text-align: center;font-family: palatino linotype;">
@@ -651,7 +651,7 @@ ui <- navbarPage(
     ),
   footer = tags$footer(
     HTML('<p style="font-size: 16px; text-align: center; color: #1d2951; font-family: calibri; background-color: #f4f0ec; padding: 10px; margin: 0; position: relative; width: 100%;">
-         <strong>Copyright &copy; 2024. Division of Agricultural Bioinformatics, ICAR-Indian Agricultural Statistics Research Institute, New Delhi, India. All rights reserved.</strong>
+         <strong>Division of Agricultural Bioinformatics, ICAR-Indian Agricultural Statistics Research Institute, New Delhi, India.</strong>
          </p>')
   )
   )
