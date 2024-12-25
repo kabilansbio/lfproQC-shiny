@@ -1,5 +1,8 @@
 ### lfproQC - Label-free proteomics data Quality Control
 This shiny app is developed based on the functionalities of the lfproQC R package.
+It can be accessed through the URLs:
+http://omics.icar.gov.in/lfproQC
+https://dabiniasri.shinyapps.io/lfproQC
 
 ## Contents
 
