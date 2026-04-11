@@ -1,0 +1,13 @@
+name: lfproQC
+title: lfproQC
+username: dabiniasri
+account: dabiniasri
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10711875
+bundleId: 11835985
+url: https://dabiniasri.shinyapps.io/lfproQC/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|demo.R|output.txt
