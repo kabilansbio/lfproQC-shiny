@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-.httr-oauth
-.DS_Store
-.quarto
+*.RData
+*.Rhistory
+rsconnect/
+output.txt
