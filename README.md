@@ -59,7 +59,7 @@ used. This will generate the aggregated or rollup protein dataset,
 visible after submitting both datasets in the **‘Rollup Protein Data’**
 tab.
 
-<img src="/www/rollup.png" alt="Uploading the peptide dataset">
+<img src="/www/rollup1.png" alt="Uploading the peptide dataset">
 <p>
 <strong>Figure 4:</strong> Uploading the peptide dataset
 </p>
@@ -68,7 +68,7 @@ The user can also download example datasets and group information from
 the provided buttons within the app. After uploading the datasets, click
 the submit button:
 
-<img src="/www/example.png" alt="Options for example dataset and data group">
+<img src="/www/example1.png" alt="Options for example dataset and data group">
 <p>
 <strong>Figure 5:</strong> Options for example dataset and data group
 </p>
@@ -81,7 +81,7 @@ statistical evaluation measures: **PCV**, **PEV**, and **PMAD**. Results
 for all three measures, along with the **NRMSE** values, will be shown.
 Click the eye symbol to view these results:
 
-<img src="/www/best_comb.png" alt="Best combinations for the dataset">
+<img src="/www/best_comb1.png" alt="Best combinations for the dataset">
 <p>
 <strong>Figure 6:</strong> Best combinations for the dataset
 </p>
@@ -92,7 +92,7 @@ datasets will be displayed in the main panel, with an option to download
 the datasets in **.csv** format. The user can also download only the
 normalized datasets based on specific normalization methods:
 
-<img src="/www/download_data.png" alt="Download option for the normalized and imputed dataset">
+<img src="/www/download_data1.png" alt="Download option for the normalized and imputed dataset">
 <p>
 <strong>Figure 7:</strong> Download option for the normalized and
 imputed dataset
@@ -105,7 +105,7 @@ combination of normalization and imputation methods through various
 exploratory plots, including box plots, density plots, QQ plots, MDS
 plots, and correlation heatmaps:
 
-<img src="/www/boxplot.png" alt="Various exploratory plots for visualization">
+<img src="/www/boxplot1.png" alt="Various exploratory plots for visualization">
 <p>
 <strong>Figure 8:</strong> Various exploratory plots for visualization
 </p>
@@ -119,12 +119,12 @@ In the **‘Differential Expression Analysis’** tab, users can perform
 differential expression analysis between any two sample groups.
 Available plots include the MA plot and the volcano plot:
 
-<img src="/www/maplot.png" alt="MA plot pairwise DE analysis">
+<img src="/www/maplot1.png" alt="MA plot pairwise DE analysis">
 <p>
 <strong>Figure 9:</strong> MA plot pairwise DE analysis
 </p>
 
-<img src="/www/volcano_plot.png" alt="Volcano plot pairwise DE analysis">
+<img src="/www/volcano_plot1.png" alt="Volcano plot pairwise DE analysis">
 <p>
 <strong>Figure 10:</strong> Volcano plot pairwise DE analysis
 </p>
@@ -134,13 +134,13 @@ up-regulated and down-regulated proteins by selecting the checkbox
 labeled **‘Override Cut-off Limits and P-value’**. Differentially
 expressed protein results can be downloaded in Excel format:
 
-<img src="/www/volcano_deg.png" alt="Volcano plot DE analysis with user-defined cut-off limits">
+<img src="/www/volcano_deg1.png" alt="Volcano plot DE analysis with user-defined cut-off limits">
 <p>
 <strong>Figure 11:</strong> Volcano plot DE analysis with user-defined
 cut-off limits
 </p>
 
-<img src="/www/deg_result.png" alt="Download option for the result of DE proteins">
+<img src="/www/deg_result1.png" alt="Download option for the result of DE proteins">
 <p>
 <strong>Figure 12:</strong> Download option for the result of DE
 proteins
