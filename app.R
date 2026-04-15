@@ -533,7 +533,7 @@ ui <- navbarPage(
         actionButton("takeDataset", "📋 Use example dataset", class = "btn btn-primary btn-info btn-action", style = "width: 100%; margin-bottom: 5px;"),
         div(style = "text-align: right; margin-bottom: 15px;",
             span(class = "tooltip-custom", icon("question-circle", style = "color: #007bff;"),
-                 span(class = "tooltip-text", "Click here to upload the example protein dataset"))
+                 span(class = "tooltip-text", "Click here to upload the example dataset (Protein or Peptide based on selection)"))
         ),
         
         div(
@@ -545,7 +545,7 @@ ui <- navbarPage(
         actionButton("takeDataGroup", "📋 Use example datagroup", class = "btn btn-primary btn-info btn-action", style = "width: 100%; margin-bottom: 5px;"),
         div(style = "text-align: right; margin-bottom: 15px;",
             span(class = "tooltip-custom", icon("question-circle", style = "color: #007bff;"),
-                 span(class = "tooltip-text", "Click here to upload the example datagroup"))
+                 span(class = "tooltip-text", "Click here to upload the example group information (Protein or Peptide based on selection)"))
         ),
         
         hr(),
@@ -1204,8 +1204,37 @@ server <- function(input,output, session){
   
   # Load sample dataset
   observeEvent(input$takeDataset, {
-    dat <- read.xlsx(file.path(getwd(), "www/sample_data.xlsx"))
-    Data(dat)
+    # Check which data type is selected
+    if (input$data_type == "Protein") {
+      dat <- tryCatch({
+        read.xlsx(file.path(getwd(), "www/sample_data.xlsx"))
+      }, error = function(e) {
+        showModal(modalDialog(
+          title = "Error Loading Example",
+          "Could not load the example protein dataset. Please check if the file exists.",
+          easyClose = TRUE
+        ))
+        return(NULL)
+      })
+    } else {
+      # Peptide data selected
+      dat <- tryCatch({
+        read.xlsx(file.path(getwd(), "www/peptide_data1.xlsx"))
+      }, error = function(e) {
+        showModal(modalDialog(
+          title = "Error Loading Example",
+          "Could not load the example peptide dataset. Please check if the file exists.",
+          easyClose = TRUE
+        ))
+        return(NULL)
+      })
+    }
+    
+    if (!is.null(dat)) {
+      Data(dat)
+      showNotification(paste0("✅ ", input$data_type, " example dataset loaded successfully!"), 
+                       type = "message", duration = 3)
+    }
   })
   
   # Observe group information upload
@@ -1226,8 +1255,37 @@ server <- function(input,output, session){
   
   # Load sample group information
   observeEvent(input$takeDataGroup, {
-    dat <- read.xlsx(file.path(getwd(), "www/sample_groups.xlsx"))
-    DataGroup(dat)
+    # Check which data type is selected
+    if (input$data_type == "Protein") {
+      dat <- tryCatch({
+        read.xlsx(file.path(getwd(), "www/sample_groups.xlsx"))
+      }, error = function(e) {
+        showModal(modalDialog(
+          title = "Error Loading Example Groups",
+          "Could not load the example protein group information.",
+          easyClose = TRUE
+        ))
+        return(NULL)
+      })
+    } else {
+      # Peptide data selected
+      dat <- tryCatch({
+        read.xlsx(file.path(getwd(), "www/peptide_groups1.xlsx"))
+      }, error = function(e) {
+        showModal(modalDialog(
+          title = "Error Loading Example Groups",
+          "Could not load the example peptide group information.",
+          easyClose = TRUE
+        ))
+        return(NULL)
+      })
+    }
+    
+    if (!is.null(dat)) {
+      DataGroup(dat)
+      showNotification(paste0("✅ ", input$data_type, " example groups loaded successfully!"), 
+                       type = "message", duration = 3)
+    }
   })
   
   # Render the group information table with horizontal scroll
@@ -1694,7 +1752,7 @@ server <- function(input,output, session){
     switch(input$combination_volcano,
            "vsn_knn" = top_table_fn(result()$vsn_knn_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
            "vsn_lls" = top_table_fn(result()$vsn_lls_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
-           "vsn_svd" = top_table_fn(result()$vsn_svd_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
+           "vsn _svd" = top_table_fn(result()$vsn_svd_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
            "loess_knn" = top_table_fn(result()$loess_knn_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
            "loess_lls" = top_table_fn(result()$loess_lls_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
            "loess_svd" = top_table_fn(result()$loess_svd_data, DataGroup(), input$ch_gr1_volcano, input$ch_gr2_volcano),
