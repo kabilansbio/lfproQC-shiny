@@ -29,7 +29,23 @@ library(shinycssloaders)
 source("source code.R")
 options(shiny.maxRequestSize = 30*1024^2)
 
-googleAuthR::gar_auth_service("www/lfproqc-e71e8eac2a9d.json")
+# Safely authenticate with Google Analytics
+ga_json_string <- Sys.getenv("GA_KEY_JSON")
+
+if (nzchar(ga_json_string)) {
+  # Running on Posit Connect Cloud (uses the secret Environment Variable)
+  temp_key <- tempfile(fileext = ".json")
+  writeLines(ga_json_string, temp_key)
+  googleAuthR::gar_auth_service(temp_key)
+} else if (file.exists("google_key.json")) {
+  # Running locally on your computer (root folder)
+  googleAuthR::gar_auth_service("google_key.json")
+} else if (file.exists("www/google_key.json")) {
+  # Running locally on your computer (www folder)
+  googleAuthR::gar_auth_service("www/google_key.json")
+} else {
+  warning("Google Analytics credentials not found. Tracking data display may be inactive.")
+}
 
 #Define UI
 ui <- navbarPage(

@@ -6,3 +6,7 @@
 *.Rhistory
 rsconnect/
 output.txt
+www/*.json
+!manifest.json
+*.json
+!manifest.json
