@@ -8,174 +8,39 @@
   },
   "files": {
     "app.R": {
-      "checksum": ""
+      "checksum": "4759dc04170c724cfc39d6890b94a5de41af03e8"
     },
     "source code.R": {
-      "checksum": ""
+      "checksum": "44a978dd044e7973f23062e77e810dc5a5048a4a"
     }
   },
   "packages": [
-    {
-      "Package": "shiny",
-      "Version": "1.7.5",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "shinythemes",
-      "Version": "1.2.0",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "magrittr",
-      "Version": "2.0.3",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "DT",
-      "Version": "0.30",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "RColorBrewer",
-      "Version": "1.1.3",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "plotly",
-      "Version": "4.10.3",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "dplyr",
-      "Version": "1.1.4",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "matrixStats",
-      "Version": "1.0.0",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "ggplot2",
-      "Version": "3.4.4",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "shinyBS",
-      "Version": "0.61.1",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "shinyjs",
-      "Version": "2.1.0",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "tidyr",
-      "Version": "1.3.0",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "readxl",
-      "Version": "1.4.3",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "reshape",
-      "Version": "0.8.9",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "reshape2",
-      "Version": "1.4.4",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "googleAnalyticsR",
-      "Version": "0.10.0",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "googleAuthR",
-      "Version": "2.0.1",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "laeken",
-      "Version": "0.5.2",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "Hmisc",
-      "Version": "5.1.1",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "Matrix",
-      "Version": "1.6.4",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "openxlsx",
-      "Version": "4.2.5.2",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "MASS",
-      "Version": "7.3.60",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "VIM",
-      "Version": "6.2.1",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    },
-    {
-      "Package": "limma",
-      "Version": "3.56.2",
-      "Source": "Bioconductor",
-      "Repository": "https://bioconductor.org"
-    },
-    {
-      "Package": "pcaMethods",
-      "Version": "1.92.0",
-      "Source": "Bioconductor",
-      "Repository": "https://bioconductor.org"
-    },
-    {
-      "Package": "vsn",
-      "Version": "3.68.0",
-      "Source": "Bioconductor",
-      "Repository": "https://bioconductor.org"
-    },
-    {
-      "Package": "shinycssloaders",
-      "Version": "1.0.0",
-      "Source": "CRAN",
-      "Repository": "https://cran.r-project.org"
-    }
+    {"Package": "shiny", "Version": "1.7.5", "Source": "CRAN"},
+    {"Package": "shinythemes", "Version": "1.2.0", "Source": "CRAN"},
+    {"Package": "magrittr", "Version": "2.0.3", "Source": "CRAN"},
+    {"Package": "DT", "Version": "0.30", "Source": "CRAN"},
+    {"Package": "RColorBrewer", "Version": "1.1.3", "Source": "CRAN"},
+    {"Package": "plotly", "Version": "4.10.3", "Source": "CRAN"},
+    {"Package": "dplyr", "Version": "1.1.4", "Source": "CRAN"},
+    {"Package": "matrixStats", "Version": "1.0.0", "Source": "CRAN"},
+    {"Package": "ggplot2", "Version": "3.4.4", "Source": "CRAN"},
+    {"Package": "shinyBS", "Version": "0.61.1", "Source": "CRAN"},
+    {"Package": "shinyjs", "Version": "2.1.0", "Source": "CRAN"},
+    {"Package": "tidyr", "Version": "1.3.0", "Source": "CRAN"},
+    {"Package": "readxl", "Version": "1.4.3", "Source": "CRAN"},
+    {"Package": "reshape", "Version": "0.8.9", "Source": "CRAN"},
+    {"Package": "reshape2", "Version": "1.4.4", "Source": "CRAN"},
+    {"Package": "googleAnalyticsR", "Version": "0.10.0", "Source": "CRAN"},
+    {"Package": "googleAuthR", "Version": "2.0.1", "Source": "CRAN"},
+    {"Package": "laeken", "Version": "0.5.2", "Source": "CRAN"},
+    {"Package": "Hmisc", "Version": "5.1.1", "Source": "CRAN"},
+    {"Package": "Matrix", "Version": "1.6.4", "Source": "CRAN"},
+    {"Package": "openxlsx", "Version": "4.2.5.2", "Source": "CRAN"},
+    {"Package": "MASS", "Version": "7.3.60", "Source": "CRAN"},
+    {"Package": "VIM", "Version": "6.2.1", "Source": "CRAN"},
+    {"Package": "limma", "Version": "3.56.2", "Source": "Bioconductor"},
+    {"Package": "pcaMethods", "Version": "1.92.0", "Source": "Bioconductor"},
+    {"Package": "vsn", "Version": "3.68.0", "Source": "Bioconductor"},
+    {"Package": "shinycssloaders", "Version": "1.0.0", "Source": "CRAN"}
   ]
 }
